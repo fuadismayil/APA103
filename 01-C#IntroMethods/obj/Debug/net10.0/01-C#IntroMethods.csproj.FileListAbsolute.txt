@@ -1,0 +1,14 @@
+C:\Users\Fuad\Desktop\Portfolio\01-C#IntroMethods\bin\Debug\net10.0\01-C#IntroMethods.exe
+C:\Users\Fuad\Desktop\Portfolio\01-C#IntroMethods\bin\Debug\net10.0\01-C#IntroMethods.deps.json
+C:\Users\Fuad\Desktop\Portfolio\01-C#IntroMethods\bin\Debug\net10.0\01-C#IntroMethods.runtimeconfig.json
+C:\Users\Fuad\Desktop\Portfolio\01-C#IntroMethods\bin\Debug\net10.0\01-C#IntroMethods.dll
+C:\Users\Fuad\Desktop\Portfolio\01-C#IntroMethods\bin\Debug\net10.0\01-C#IntroMethods.pdb
+C:\Users\Fuad\Desktop\Portfolio\01-C#IntroMethods\obj\Debug\net10.0\01-C#IntroMethods.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Fuad\Desktop\Portfolio\01-C#IntroMethods\obj\Debug\net10.0\01-C#IntroMethods.AssemblyInfoInputs.cache
+C:\Users\Fuad\Desktop\Portfolio\01-C#IntroMethods\obj\Debug\net10.0\01-C#IntroMethods.AssemblyInfo.cs
+C:\Users\Fuad\Desktop\Portfolio\01-C#IntroMethods\obj\Debug\net10.0\01-C#IntroMethods.csproj.CoreCompileInputs.cache
+C:\Users\Fuad\Desktop\Portfolio\01-C#IntroMethods\obj\Debug\net10.0\01-C#IntroMethods.dll
+C:\Users\Fuad\Desktop\Portfolio\01-C#IntroMethods\obj\Debug\net10.0\refint\01-C#IntroMethods.dll
+C:\Users\Fuad\Desktop\Portfolio\01-C#IntroMethods\obj\Debug\net10.0\01-C#IntroMethods.pdb
+C:\Users\Fuad\Desktop\Portfolio\01-C#IntroMethods\obj\Debug\net10.0\01-C#IntroMethods.genruntimeconfig.cache
+C:\Users\Fuad\Desktop\Portfolio\01-C#IntroMethods\obj\Debug\net10.0\ref\01-C#IntroMethods.dll
