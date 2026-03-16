@@ -1,4 +1,5 @@
-﻿static double GetNumber()
+﻿//console dan reqem daxil edilmesini saglayan method
+static double GetNumber()
 {
     double num;
 
@@ -46,7 +47,7 @@ static double MultiplyTwoNums(double num1, double num2)
 
 static double DivideTwoNums(double num1, double num2)
 {
-    return num1/ num2;
+    return num1 / num2;
 }
 //Console.WriteLine("Qismetini tapmaq üçün ilk boluneni sonra boleni daxil edin:");
 //Console.WriteLine($"daxil etdiyiniz iki ededin qismeti: {DivideTwoNums(GetNumber(), GetNumber())}");
@@ -99,11 +100,11 @@ static void FindNumbers(params int[] numbers)
 int[] numbers = [14, 20, 35, 40, 57, 60, 100];
 static int FindAndSum(int[] numbers)
 {
-    int sum=0;
+    int sum = 0;
     for (int i = 0; i < numbers.Length; i++)
     {
 
-        if (numbers[i]%4==0 && numbers[i] % 5 == 0)
+        if (numbers[i] % 4 == 0 && numbers[i] % 5 == 0)
         {
             sum += numbers[i];
         }
@@ -118,7 +119,8 @@ static int FindAndSum(int[] numbers)
 static int FindLetterCount(string sentence, char letter)
 {
     int letterCount = 0;
-    for (int i = 0; i < sentence.Length; i++) {
+    for (int i = 0; i < sentence.Length; i++)
+    {
         if (sentence[i] == letter)
         {
             letterCount++;

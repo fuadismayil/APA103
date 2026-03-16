@@ -12,8 +12,8 @@
     }
 }
 int[] prices = [100, 200, 300, 400, 500];
-CustomArrResize(ref prices,600,700,800);
-for(int i = 0; i < prices.Length; i++)
+CustomArrResize(ref prices, 600, 700, 800);
+for (int i = 0; i < prices.Length; i++)
 {
     Console.WriteLine(prices[i]);
 }
