@@ -38,8 +38,8 @@
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Fuad\\Desktop\\APA103\\03-ObjectClassConstructorInheritanceThisvsBase\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Fuad\\Desktop\\APA103\\03-ObjectClassConstructorInheritanceThisvsBase\\Program.cs*",
-              "RelativeToolTip": "Program.cs*",
+              "ToolTip": "C:\\Users\\Fuad\\Desktop\\APA103\\03-ObjectClassConstructorInheritanceThisvsBase\\Program.cs",
+              "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAQwB8AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-16T13:27:49.531Z",
@@ -55,8 +55,7 @@
               "RelativeToolTip": "Models\\Administrator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAACZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T13:41:41.243Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-16T13:41:41.243Z"
             },
             {
               "$type": "Document",
@@ -68,8 +67,7 @@
               "RelativeToolTip": "Models\\Student.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAACkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T13:31:31.502Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-16T13:31:31.502Z"
             },
             {
               "$type": "Document",
@@ -81,8 +79,7 @@
               "RelativeToolTip": "Models\\Teacher.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAACXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T13:31:46.29Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-16T13:31:46.29Z"
             },
             {
               "$type": "Document",
@@ -94,8 +91,7 @@
               "RelativeToolTip": "Models\\Person.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAAwBoAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T13:31:21.617Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-16T13:31:21.617Z"
             }
           ]
         }
