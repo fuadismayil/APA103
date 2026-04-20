@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16-Tables</title>
+    <style>
+        .table-10, .table-10 td {
+            border: 1px solid green;
+        }
+        .table-10 td {
+            width: 50px;
+            height: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <table border="1px solid black">
+        <caption>table-1</caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Harry Depp</td>
+                <td>28</td>
+                <td>Britain</td>
+            </tr>
+            <tr>
+                <td>John Smith</td>
+                <td>35</td>
+                <td>USA</td>
+            </tr>
+            <tr>
+                <td>Ram Krishna</td>
+                <td>19</td>
+                <td>Nepal</td>
+            </tr>
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+    <hr>
+    <table border="2px solid gray;">
+        <caption>table-2</caption>
+        <thead>
+            <tr>
+                <th >Product</th>
+                <th >Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Butter</td>
+                <td>3 Kilogram</td>
+            </tr>
+            <tr>
+                <td>Milk</td>
+                <td>3 Liters</td>
+            </tr>
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+    <hr>
+    <table border="1px solid black">
+    <caption>Product Info</caption>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Flavors</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="3">Milk</td>
+            <td>Almond</td>
+        </tr>
+        <tr>
+            <td>Mango</td>
+        </tr>
+        <tr>
+            <td>Chocolate</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">These are exclusive flavors</td>
+        </tr>
+    </tfoot>
+</table>
+<hr>
+<table border="1px solid black" style="border-collapse: collapse;">
+    <caption>table-5</caption>
+    <tbody>
+        <tr>
+            <td rowspan="6">section</td>
+            <td rowspan="3">subsection 1</td>
+            <td>text1</td>
+        </tr>
+        <tr>
+            <td>text2</td>
+        </tr>
+        <tr>
+            <td>text3</td>
+        </tr>
+        <tr>
+            <td rowspan="2">subsection 2</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td>subsection 3</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<table border="1px solid black">
+    <caption>table-7</caption>
+    <thead>
+        <tr>
+            <th><u>ID</u></th>
+            <th><u>Name</u></th>
+            <th><u>Subject</u></th>
+            <th><u>Marks</u></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="3">1</td>
+            <td rowspan="3">David</td>
+            <td>Maths</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td>Physics</td>
+            <td>90</td>
+        </tr>
+        <tr>
+            <td>Computers</td>
+            <td>70</td>
+        </tr>
+        <tr>
+            <td rowspan="3">2</td>
+            <td rowspan="3">Alex</td>
+            <td>Maths</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td>Physics</td>
+            <td>70</td>
+        </tr>
+        <tr>
+            <td>Computers</td>
+            <td>90</td>
+        </tr>
+    </tbody>
+    <tfoot></tfoot>
+</table>
+<hr>
+<table border="1px solid black">
+    <caption>table-9</caption>
+    <thead>
+        <tr>
+            <th colspan="6">Time Table</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th rowspan="6">Hours</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+        </tr>
+        <tr>
+            <td>Computer</td>
+            <td>Maths</td>
+            <td>Computer</td>
+            <td>Maths</td>
+            <td>Arts</td>
+        </tr>
+        <tr>
+            <td>Computer</td>
+            <td>Maths</td>
+            <td>Computer</td>
+            <td>Maths</td>
+            <td>Arts</td>
+        </tr>
+        <tr>
+            <th colspan="5">LUNCH</th>
+        </tr>
+        <tr>
+            <td>Computer</td>
+            <td>Maths</td>
+            <td>Computer</td>
+            <td>Maths</td>
+            <td rowspan="2">Project</td>
+        </tr>
+        <tr>
+            <td>Computer</td>
+            <td>Maths</td>
+            <td>Computer</td>
+            <td>Maths</td>
+        </tr>
+    </tbody>
+    <tfoot></tfoot>
+</table>
+<hr>
+<table class="table-10">
+    <tbody >
+        <caption>table-10</caption>
+        <tr>
+            <td rowspan="2" >A</td>
+            <td>B</td>
+            <td rowspan="3">D</td>
+            <td colspan="2">E</td>
+            <td>F</td>
+        </tr>
+        <tr>
+            <td>C</td>
+            <td rowspan="2">G</td>
+            <td rowspan="2">H</td>
+            <td rowspan="2">I</td>
+        </tr>
+        <tr>
+            <td colspan="2">J</td>
+        </tr>
+        <tr>
+            <td colspan="3">K</td>
+            <td>L</td>
+            <td colspan="2">M</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+
+</html>
