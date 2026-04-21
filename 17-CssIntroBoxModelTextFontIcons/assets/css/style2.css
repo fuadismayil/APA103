@@ -1,0 +1,42 @@
+body {
+margin: 0;
+padding: 80px 20px;
+background-color: #ffffff;
+}
+.container {
+width: 780px;
+margin: 0 auto;
+}
+.row {
+display: table;
+width: 100%;
+}
+.first-row {
+margin-bottom: 90px;
+}
+.time {
+display: table-cell;
+width: 45%;
+
+
+
+font-family: Arial;
+font-weight: bold;
+font-size: 24px;
+color: #3b73c9;
+padding-right: 20px;
+}
+.text {
+display: table-cell;
+width: 55%;
+vertical-align: middle;
+text-align: justify;
+line-height: 1.6;
+}
+.normal {
+font-family: Georgia, "Times New Roman", Times, serif;
+font-size: 15px;
+}
+.second{
+    font-family: cursive;
+}

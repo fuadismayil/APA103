@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('./assets/images/image3.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+}
+
+.content-box {
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.gold-text {
+    color: #ffd700;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 17px;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.middle-spacing {
+    margin-top: 140px;
+}
+
+.bottom-spacing {
+    margin-top: 110px;
+}
+
+.transparent-text {
+    opacity: 0.6;
+}

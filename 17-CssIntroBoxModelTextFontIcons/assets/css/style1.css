@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ebe5da;
+    text-align: center;
+}
+
+.container {
+    padding-top: 100px;
+    padding-bottom: 80px;
+}
+
+.the-text {
+    font-family: 'Cinzel', serif;
+    color: #ae8341;
+    font-size: 22px;
+    letter-spacing: 6px;
+    margin-bottom: -70px;
+    position: relative;
+    z-index: 2;
+}
+
+.hamilton {
+    font-family: 'Great Vibes', cursive;
+    font-size: 220px;
+    color: #141414;
+    margin: 0;
+    font-weight: 400;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.font-family {
+    font-family: 'Cinzel', serif;
+    color: #ae8341;
+    font-size: 42px;
+    letter-spacing: 16px;
+    margin-top: 0px;
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+.styles {
+    font-family: 'Cinzel', serif;
+    color: #141414;
+    font-size: 26px;
+    letter-spacing: 14px;
+    margin-top: 25px;
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+.crafted {
+    font-family: 'Great Vibes', cursive;
+    font-size: 42px;
+    color: #ae8341;
+    margin-top: 35px;
+    font-weight: 400;
+}
+
+.footer-banner {
+    font-family: 'Cinzel', serif;
+    background-color: #8c765d;
+    color: #ffffff;
+    padding: 25px 0;
+    font-size: 14px;
+    letter-spacing: 8px;
+    border-top: 3px solid #63503d;
+    border-bottom: 3px solid #63503d;
+    margin-top: 40px;
+}
