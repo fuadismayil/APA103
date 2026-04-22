@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
+
+
+.montserrat-bold {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.montserrat-regular {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+.lato-light {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.lato-regular {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #2C3E50;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1320px;
+    margin: 0 auto;
+    align-items: center;
+    height: 105px;
+
+
+}
+
+.header a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #1ABC9C;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.nav-links a {
+    font-size: 16px;
+    padding: 16px;
+    transition: color 0.5s;
+}
+
+.introduction {
+    background-color: #1ABC9C;
+    color: #fff;
+    height: 680px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro-img {
+    width: 240px;
+    margin-bottom: 48px;
+}
+
+.introduction h1 {
+    font-size: 64px;
+}
+
+.star,
+.p-star,
+.a-star {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.star .line {
+    width: 112px;
+    height: 4px;
+    border-radius: 16px;
+    background: #fff;
+}
+
+.introduction p {
+    font-size: 24px;
+    color: #fff;
+}
+
+.portfolio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 96px 0;
+}
+
+.portfolio h4,.contact h4 {
+    font-size: 48px;
+    color: #2C3E50;
+}
+
+.p-star .line {
+    background: #2C3E50;
+    width: 112px;
+    height: 4px;
+    border-radius: 16px;
+}
+
+.a-star .line {
+    background: #fff;
+    width: 112px;
+    height: 4px;
+    border-radius: 16px;
+}
+
+.p-imgs {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.p-imgs img {
+    width: 400px;
+    border-radius: 8px;
+}
+
+.f-row,
+.s-row {
+    display: flex;
+    gap: 41px;
+}
+
+.about {
+    background-color: #1ABC9C;
+    display: flex;
+    flex-direction: column;
+    height: 590px;
+    justify-content: center;
+    align-items: center;
+}
+
+.about h4 {
+    font-size: 48px;
+    color: #fff;
+}
+.a-text{
+    font-size: 20px;
+    display: flex;
+    gap: 24px;
+}
+.a-text p {
+    color: #fff;
+    width: 400px;
+    line-height: 30px;
+}
+.about .a-dl{
+    text-decoration: none;
+    color: #fff;
+    padding: 16px 28px;
+    font-size: 20px;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    margin-top: 48px;
+    transition: all 0.5s;
+}
+.fa-download{
+    transition: all 0.5s;
+    background: none !important;
+    color: #fff;
+}
+.a-dl:hover .fa-download, 
+.a-dl:hover {
+    background-color: #fff;
+    color: #000 !important;
+}
+.contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 878px;
+}
+form {
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    width: 740px;
+    height: 554px;
+    flex-direction: column;
+    gap: 30px; /* Handles all the spacing between inputs automatically */
+}
+
+input, textarea {
+    font-family: inherit;
+    border: none;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 24px 0;
+    font-size: 24px;
+    outline: none; /* Removes the default blue glow when clicked */
+}
+textarea{
+    height: 160px;
+}
+
+button {
+    background-color: #6AD3BF;
+    color: white;
+    border: none;
+    padding: 16px 28px;
+    line-height: 30px;
+    font-size: 20px;
+    border-radius: 8px;
+    border: 2px solid #6AD3BF;
+    align-self: flex-start; /* Prevents the button from stretching across the screen */
+}
+.f-top{
+    display: flex;
+    background: #2C3E50;
+    height: 272.8px;
+    align-items: center;
+    justify-content: center;
+}
+.f-top h4{
+    color: #fff;
+    font-size: 24px;
+    margin: 0 0 24px;
+}
+.f-loc,.f-atw,.f-af{
+    display: flex;
+    flex-direction: column;
+    padding: 0 12px;
+    align-items: center;
+    justify-content: center;
+    width: 416px;
+}
+.f-top p,.f-top a{
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+}
+.f-atw i {
+    color: #fff;
+    transition: all 0.5s;
+}
+
+.f-atw a {
+    border: 2px solid #fff;
+    border-radius: 100%;
+    margin: 0 4px;
+    padding: 14px 12px;
+    display: inline-flex; 
+    transition: all 0.5s;
+    text-decoration: none;
+}
+
+.f-atw a:hover {
+    background-color: #fff;
+    color: #000 !important;
+}
+
+.f-atw a:hover i {
+    color: #000 !important;
+}
+.f-atw h4{
+    margin: 0 0 36px;
+}
+.cprg
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1a252f;
+    height: 72px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.f-af p a{
+    color:#1ABC9C;
+}
