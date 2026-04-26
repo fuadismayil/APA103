@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-orange: #f4623a;
+    --dark-section: #212529;
+    --text-dark: #212529;
+    --text-gray: #6c757d;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text-dark);
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar-brand,
+.nav-link {
+    color: var(--text-dark);
+}
+
+.nav-link:hover {
+    color: var(--main-orange);
+}
+
+.orange-line,
+.white-line {
+    width: 55px;
+    height: 3px;
+}
+
+.orange-line {
+    background-color: var(--main-orange);
+}
+
+.white-line {
+    background-color: white;
+}
+
+.custom-orange-btn,
+.custom-white-btn,
+.submit-btn {
+    border-radius: 50px;
+    padding: 18px 36px;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+}
+
+.custom-orange-btn {
+    background-color: var(--main-orange);
+    color: white;
+}
+
+.custom-orange-btn:hover {
+    background-color: #cf5331;
+    color: white;
+}
+
+.custom-white-btn {
+    background-color: white;
+    color: black;
+}
+
+.custom-white-btn:hover {
+    background-color: #e2e6ea;
+    color: black;
+}
+
+.submit-btn {
+    background-color: #f89982;
+    color: white;
+}
+
+.submit-btn:hover {
+    background-color: var(--main-orange);
+    color: white;
+}
+
+.introduction {
+    min-height: 790px;
+    background-image:
+        linear-gradient(rgba(92, 77, 66, 0.8), rgba(92, 77, 66, 0.8)),
+        url(../images/introduction/bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.introduction h1 {
+    line-height: 1.2;
+}
+
+.introduction p {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.about {
+    background-color: var(--main-orange);
+    padding: 130px 0;
+}
+
+.about p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 18px;
+}
+
+.services {
+    padding: 130px 0;
+}
+
+.service-icon {
+    font-size: 45px;
+    color: var(--main-orange);
+}
+
+.service-card p {
+    font-size: 18px;
+}
+
+
+.portfolio-box {
+    display: block;
+    overflow: hidden;
+}
+
+.portfolio-box img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+    transition: 0.4s ease;
+}
+
+.portfolio-box:hover img {
+    transform: scale(1.08);
+    filter: brightness(70%);
+}
+
+
+.download-sec {
+    background-color: var(--dark-section);
+    padding: 110px 0;
+}
+
+
+.contact {
+    padding: 130px 0;
+}
+
+.contact p {
+    font-size: 18px;
+}
+
+.form-control {
+    min-height: 60px;
+    border-radius: 5px;
+}
+
+.message-area {
+    height: 160px;
+    resize: none;
+}
+
+.phone-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.phone-box i {
+    font-size: 28px;
+    color: var(--text-gray);
+}
+
+.phone-box a {
+    color: var(--text-dark);
+}
+
+
+footer {
+    background-color: #f8f9fa;
+}
+
+
+@media (max-width: 991px) {
+    .introduction {
+        min-height: 700px;
+    }
+
+    .introduction h1 {
+        font-size: 42px;
+    }
+
+    .about,
+    .services,
+    .contact {
+        padding: 100px 0;
+    }
+
+    .portfolio-box img {
+        height: 300px;
+    }
+}
+
+
+@media (max-width: 575px) {
+    .navbar-brand {
+        font-size: 20px !important;
+    }
+
+    .introduction {
+        min-height: 620px;
+        padding: 80px 0;
+    }
+
+    .introduction h1 {
+        font-size: 32px;
+    }
+
+    .introduction p {
+        font-size: 16px;
+    }
+
+    .about,
+    .services,
+    .contact {
+        padding: 80px 0;
+    }
+
+    .about p,
+    .service-card p,
+    .contact p {
+        font-size: 16px;
+    }
+
+    .portfolio-box img {
+        height: 260px;
+    }
+
+    .download-sec {
+        padding: 80px 0;
+    }
+
+    .download-sec h2 {
+        font-size: 28px;
+    }
+
+    .custom-orange-btn,
+    .custom-white-btn,
+    .submit-btn {
+        padding: 16px 30px;
+        font-size: 13px;
+    }
+}
