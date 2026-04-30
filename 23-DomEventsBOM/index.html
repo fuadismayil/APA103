@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <div class="calc-container d-flex justify-content-center align-items-center min-vh-100 bg-success-subtle">
+        <div class="calculator d-flex flex-column align-items-center gap-3 w-100" style="max-width: 600px;">
+            <div class="input-area d-flex gap-2 w-100">
+                <input class="form-control first-input" type="number" placeholder="First number">
+                <input class="form-control second-input" type="number" placeholder="Second number">
+            </div>
+            <input class="form-control text-center" type="text" id="result" placeholder="Result" readonly>
+            <div class="buttons d-grid gap-2 w-100" style="grid-template-columns: repeat(4, 1fr);">
+                <button class="btn btn-primary" id="plus">Plus</button>
+                <button class="btn btn-primary" id="minus">Minus</button>
+                <button class="btn btn-primary" id="mult">Mult</button>
+                <button class="btn btn-primary" id="divide">Divide</button>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
