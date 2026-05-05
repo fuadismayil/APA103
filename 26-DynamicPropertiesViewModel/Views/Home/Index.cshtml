@@ -1,0 +1,74 @@
+﻿@using _26_DynamicPropertiesViewModel.Models
+@using _26_DynamicPropertiesViewModel.ViewModels
+
+@model HomeVM
+
+<h1>Home Page</h1>
+
+<h2>Students</h2>
+
+<table style="border: 1px solid black; border-collapse: collapse;">
+    <tr>
+        <th style="border: 1px solid black; padding: 8px;">Id</th>
+        <th style="border: 1px solid black; padding: 8px;">Name</th>
+        <th style="border: 1px solid black; padding: 8px;">Age</th>
+    </tr>
+
+    @foreach (Student student in Model.Students)
+    {
+        <tr>
+            <td style="border: 1px solid black; padding: 8px;">@student.Id</td>
+            <td style="border: 1px solid black; padding: 8px;">@student.Name</td>
+            <td style="border: 1px solid black; padding: 8px;">@student.Age</td>
+        </tr>
+    }
+</table>
+
+<br />
+
+<h2>Teachers</h2>
+
+<table style="border: 1px solid black; border-collapse: collapse;">
+    <tr>
+        <th style="border: 1px solid black; padding: 8px;">Id</th>
+        <th style="border: 1px solid black; padding: 8px;">Name</th>
+        <th style="border: 1px solid black; padding: 8px;">Salary</th>
+    </tr>
+
+    @foreach (Teacher teacher in Model.Teachers)
+    {
+        <tr>
+            <td style="border: 1px solid black; padding: 8px;">@teacher.Id</td>
+            <td style="border: 1px solid black; padding: 8px;">@teacher.Name</td>
+            <td style="border: 1px solid black; padding: 8px;">@teacher.Salary</td>
+        </tr>
+    }
+</table>
+
+@*@{
+    List<Student> students = ViewBag.Students;
+}
+
+<ul>
+    @foreach (Student item in students)
+    {
+        <li>
+            @item.Id - @item.Name - @item.Age
+        </li>
+    }
+</ul>*@
+
+
+
+@* @{
+    var students = ViewData["Students"] as List<Student>;
+}
+
+<ul>
+    @foreach (Student item in students)
+    {
+        <li>
+            @item.Id - @item.Name - @item.Age
+        </li>
+    }
+</ul> *@
