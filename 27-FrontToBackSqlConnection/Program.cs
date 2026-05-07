@@ -1,4 +1,6 @@
+using _27_FrontToBackSqlConnection;
 using _27_FrontToBackSqlConnection.Data;
+using _27_FrontToBackSqlConnection.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,8 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {
-    opt.UseSqlServer("Server=.\\SQLEXPRESS;Database=ProniaDB;Trusted_Connection=True;TrustServerCertificate=true");
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("default"));
 });
+
+//builder.Services.AddScoped<IEmailService, TestService>();
+//builder.Services.AddTransient<EmailService>();
+//builder.Services.AddSingleton<EmailService>();
 
 var app = builder.Build();
 

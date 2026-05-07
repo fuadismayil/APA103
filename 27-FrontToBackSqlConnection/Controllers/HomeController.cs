@@ -1,16 +1,30 @@
 using _27_FrontToBackSqlConnection.Data;
 using _27_FrontToBackSqlConnection.Models;
+using _27_FrontToBackSqlConnection.Services;
 using _27_FrontToBackSqlConnection.View_Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace _27_FrontToBackSqlConnection.Controllers
 {
     public class HomeController : Controller
     {
+        // DI - Dependency Injection
+        // IOC - Inversion of Control
+        // DIP - Dependency Inversion Principle
+        
+        // DC - Dependency Container
+
+
+
+
         private readonly AppDbContext _context;
-        public HomeController(AppDbContext context)
+        //private readonly IEmailService _emailService;
+
+        public HomeController(AppDbContext context/*, IEmailService emailService*/)
         {
             _context = context;
+            //_emailService = emailService;
         }
 
         //List<Slider> _sliders = new List<Slider>
@@ -24,15 +38,29 @@ namespace _27_FrontToBackSqlConnection.Controllers
 
         public IActionResult Index()
         {
+            
+            //Product product=_context.Products.Include(product=>).FirstOrDefault();
+
+            //Category category=_context.Categories.FirstOrDefault(c=>c.Id==product.CategoryId);
+
             //_context.AddRange(_sliders);
             //_context.SaveChanges();
+
+            //_emailService.SendEmail();
+
             List<Slider> _sliders = _context.Sliders
                 .Where(s => !s.IsDeleted)
                 .OrderBy(s => s.Order)
                 .ToList();
+
+
+            List<Product> products=_context.Products.Where(p=>p.IsDeleted).Include(p=>p.ProductImages).ToList();
+
+
             HomeVM homeVM = new()
             {
-                Sliders = _sliders
+                Sliders = _sliders,
+                Products = products
             };
             return View(homeVM);
         }
