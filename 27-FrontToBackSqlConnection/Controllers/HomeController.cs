@@ -29,7 +29,7 @@ namespace _27_FrontToBackSqlConnection.Controllers
         //};
 
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             //_context.AddRange(ssliders);
             //_context.SaveChanges();
@@ -37,15 +37,15 @@ namespace _27_FrontToBackSqlConnection.Controllers
             //Product product = _context.Products.Include(p=>p.Category).FirstOrDefault();
             //Category category = _context.Categories.FirstOrDefault(c=>c.Id==product.CategoryId);
 
-            List<Slider> sliders = _context.Sliders
+            List<Slider> sliders = await _context.Sliders
                 .Where(s => !s.IsDeleted)
                 .OrderBy(s => s.Order)
-                .ToList();
+                .ToListAsync();
 
-            List<Product> products = _context.Products
+            List<Product> products = await _context.Products
                 .Where(p => !p.IsDeleted)
                 .Include(p => p.ProductImages)
-                .ToList();
+                .ToListAsync();
 
             HomeVM homeVM = new()
             {
