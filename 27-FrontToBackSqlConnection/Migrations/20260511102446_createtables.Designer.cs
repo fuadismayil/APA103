@@ -12,7 +12,7 @@ using _27_FrontToBackSqlConnection.Data;
 namespace _27_FrontToBackSqlConnection.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260507205621_createtables")]
+    [Migration("20260511102446_createtables")]
     partial class createtables
     {
         /// <inheritdoc />
@@ -76,9 +76,6 @@ namespace _27_FrontToBackSqlConnection.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
                     b.Property<string>("SKU")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -86,8 +83,6 @@ namespace _27_FrontToBackSqlConnection.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("Products");
                 });
@@ -169,17 +164,13 @@ namespace _27_FrontToBackSqlConnection.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("_27_FrontToBackSqlConnection.Models.Product", null)
-                        .WithMany("MyProperty")
-                        .HasForeignKey("ProductId");
-
                     b.Navigation("Category");
                 });
 
             modelBuilder.Entity("_27_FrontToBackSqlConnection.Models.ProductImage", b =>
                 {
                     b.HasOne("_27_FrontToBackSqlConnection.Models.Product", "Product")
-                        .WithMany()
+                        .WithMany("ProductImages")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -194,7 +185,7 @@ namespace _27_FrontToBackSqlConnection.Migrations
 
             modelBuilder.Entity("_27_FrontToBackSqlConnection.Models.Product", b =>
                 {
-                    b.Navigation("MyProperty");
+                    b.Navigation("ProductImages");
                 });
 #pragma warning restore 612, 618
         }

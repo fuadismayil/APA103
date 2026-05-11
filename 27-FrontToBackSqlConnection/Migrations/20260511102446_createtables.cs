@@ -37,7 +37,6 @@ namespace _27_FrontToBackSqlConnection.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SKU = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -50,11 +49,6 @@ namespace _27_FrontToBackSqlConnection.Migrations
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Products_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -89,11 +83,6 @@ namespace _27_FrontToBackSqlConnection.Migrations
                 name: "IX_Products_CategoryId",
                 table: "Products",
                 column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_ProductId",
-                table: "Products",
-                column: "ProductId");
         }
 
         /// <inheritdoc />
