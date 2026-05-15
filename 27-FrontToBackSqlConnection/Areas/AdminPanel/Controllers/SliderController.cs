@@ -1,5 +1,8 @@
-﻿using _27_FrontToBackSqlConnection.Data;
+﻿using _27_FrontToBackSqlConnection.Areas.AdminPanel.View_Models.Slider;
+using _27_FrontToBackSqlConnection.Data;
 using _27_FrontToBackSqlConnection.Models;
+using _27_FrontToBackSqlConnection.Utilities.Enums;
+using _27_FrontToBackSqlConnection.Utilities.Extension;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,31 +36,68 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Slider slider)
+        public async Task<IActionResult> Create(SliderCreateVM slider)
         {
-            if (slider.Photo == null)
-            {
-                ModelState.AddModelError("Photo", "You can't leave this field empty.");
-                return View(slider);
-            }
-            if (!slider.Photo.ContentType.Contains("image/"))
+            if (slider.Photo == null) return View();
+
+            if (!slider.Photo.CheckFileType("image/"))
             {
                 ModelState.AddModelError("Photo", "Only image formats are allowed.");
-                return View(slider);
+                return View();
             }
-            if (slider.Photo.Length > 2 * 1024 * 1024)
+            if (!slider.Photo.CheckFileSize(FileSizes.MB, 2))
             {
                 ModelState.AddModelError("Photo", "The image size must not exceed 2MB.");
-                return View(slider);
+                return View();
             }
-            string fileName = Guid.NewGuid().ToString()+"-"+slider.Photo.FileName;
-            string path = Path.Combine(_env.WebRootPath, "assets", "images", "website-images", fileName);
-            using (FileStream stream = new FileStream(path, FileMode.Create))
+            Slider slider1 = new()
             {
-                await slider.Photo.CopyToAsync(stream);
-            }
-            slider.Image = fileName;
-            await _context.Sliders.AddAsync(slider);
+                Title = slider.Title,
+                Subtitle = slider.Subtitle,
+                Description = slider.Description,
+                Order = slider.Order,
+                Image = await slider.Photo.CreateFile(_env.WebRootPath, "assets", "images", "website-images")
+            };
+
+            await _context.Sliders.AddAsync(slider1);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Update(int? id)
+        {
+            if (id is null || id < 1) return BadRequest();
+            Slider? slider = await _context.Sliders
+                .Where(s => !s.IsDeleted)
+                .FirstOrDefaultAsync(s => s.Id == id);
+            if (slider == null) return NotFound();  
+            SliderUpdateVM sliderUpdateVM = new()
+            {
+                Title = slider.Title,
+                Subtitle = slider.Subtitle,
+                Description = slider.Description,
+                Order = slider.Order,
+                Image = slider.Image,
+            };
+            return View(sliderUpdateVM);
+        }
+
+        public async Task<IActionResult> Detail(int? id)
+        {
+            if (id is null || id < 1) return BadRequest();
+            Slider? slider = await _context.Sliders
+                .Where(s => !s.IsDeleted)
+                .FirstOrDefaultAsync(s => s.Id == id);
+            if (slider == null) return NotFound();
+            return View(slider);
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var slider = await _context.Sliders.FindAsync(id);
+            if (slider == null) return NotFound();
+            slider.Image.DeleteFile(_env.WebRootPath, "assets", "images", "website-images");
+            _context.Sliders.Remove(slider);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
