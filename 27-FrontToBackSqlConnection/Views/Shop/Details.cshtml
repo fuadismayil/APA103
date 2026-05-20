@@ -174,53 +174,24 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="product-category social-link align-items-center pb-0">
-                            <span class="title pe-3">Share:</span>
+                        <div class="product-category mt-2">
+                            <span class="title">Tags :</span>
                             <ul>
-                                <li>
-                                    <a href="#"
-                                       data-tippy="Pinterest"
-                                       data-tippy-inertia="true"
-                                       data-tippy-animation="shift-away"
-                                       data-tippy-delay="50"
-                                       data-tippy-arrow="true"
-                                       data-tippy-theme="sharpborder">
-                                        <i class="fa fa-pinterest-p"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                       data-tippy="Twitter"
-                                       data-tippy-inertia="true"
-                                       data-tippy-animation="shift-away"
-                                       data-tippy-delay="50"
-                                       data-tippy-arrow="true"
-                                       data-tippy-theme="sharpborder">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                       data-tippy="Tumblr"
-                                       data-tippy-inertia="true"
-                                       data-tippy-animation="shift-away"
-                                       data-tippy-delay="50"
-                                       data-tippy-arrow="true"
-                                       data-tippy-theme="sharpborder">
-                                        <i class="fa fa-tumblr"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                       data-tippy="Dribbble"
-                                       data-tippy-inertia="true"
-                                       data-tippy-animation="shift-away"
-                                       data-tippy-delay="50"
-                                       data-tippy-arrow="true"
-                                       data-tippy-theme="sharpborder">
-                                        <i class="fa fa-dribbble"></i>
-                                    </a>
-                                </li>
+                                @if (Model.Product.ProductTags != null && Model.Product.ProductTags.Any())
+                                {
+                                    @foreach (ProductTag productTag in Model.Product.ProductTags)
+                                    {
+                                        <li class="d-inline-block me-1">
+                                            <a href="#" class="badge bg-light text-dark p-2 border" style="border-radius: 4px; font-size: 13px;">
+                                                @productTag.Tag?.Name
+                                            </a>
+                                        </li>
+                                    }
+                                }
+                                else
+                                {
+                                    <li><span class="text-muted">Tags not available</span></li>
+                                }
                             </ul>
                         </div>
                     </div>
