@@ -2,6 +2,8 @@
 using _27_FrontToBackSqlConnection.Areas.AdminPanel.Views.Product;
 using _27_FrontToBackSqlConnection.Data;
 using _27_FrontToBackSqlConnection.Models;
+using _27_FrontToBackSqlConnection.Utilities.Enums;
+using _27_FrontToBackSqlConnection.Utilities.Extension;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -47,12 +49,33 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(ProductCreateVM productCreateVM)
         {
-            productCreateVM.Categories = await _context.Categories
-                .Where(c => !c.IsDeleted)
-                .ToListAsync();
+            productCreateVM.Categories = await _context.Categories.Where(c => !c.IsDeleted).ToListAsync();
             productCreateVM.Tags = await _context.Tags.Where(t => !t.IsDeleted).ToListAsync();
             if (!ModelState.IsValid) return View(productCreateVM);
+            if (!productCreateVM.MainPhoto.CheckFileType("image/"))
+            {
+                ModelState.AddModelError(nameof(productCreateVM.MainPhoto), "File type is incorrect!");
+                return View(productCreateVM);
+            }
+            if (!productCreateVM.MainPhoto.CheckFileSize(FileSizes.MB, 2))
+            {
+                ModelState.AddModelError(nameof(productCreateVM.MainPhoto), "Image size cannot exceed 2 MB!");
+                return View(productCreateVM);
+            }
+
+            if (!productCreateVM.HoverPhoto.CheckFileType("image/"))
+            {
+                ModelState.AddModelError(nameof(productCreateVM.HoverPhoto), "File type is incorrect!");
+                return View(productCreateVM);
+            }
+            if (!productCreateVM.HoverPhoto.CheckFileSize(FileSizes.MB, 2))
+            {
+                ModelState.AddModelError(nameof(productCreateVM.HoverPhoto), "Image size cannot exceed 2 MB!");
+                return View(productCreateVM);
+            }
+
             bool existCategory = productCreateVM.Categories.Any(c => c.Id == productCreateVM.CategoryId);
+
             if (!existCategory)
             {
                 ModelState.AddModelError(nameof(ProductCreateVM.CategoryId), "Category not found!");
@@ -61,16 +84,16 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
 
             if (productCreateVM.TagIds != null && productCreateVM.TagIds.Any())
             {
-                foreach (int tagId in productCreateVM.TagIds)
+                bool existTag = productCreateVM.TagIds.Any(tagId => !productCreateVM.Tags.Exists(t => t.Id == tagId));
+                if (existTag)
                 {
-                    bool tagExistsInDb = productCreateVM.Tags.Any(t => t.Id == tagId);
-                    if (!tagExistsInDb)
-                    {
-                        ModelState.AddModelError(nameof(ProductCreateVM.TagIds), "One or more selected tags doesn't exist!");
-                        return View(productCreateVM);
-                    }
+                    ModelState.AddModelError(nameof(productCreateVM.TagIds), "tag not exists");
+                    return View(productCreateVM);
                 }
             }
+
+            string mainFileName = await productCreateVM.MainPhoto.CreateFile(_env.WebRootPath, "assets", "images", "website-images");
+            string hoverFileName = await productCreateVM.HoverPhoto.CreateFile(_env.WebRootPath, "assets", "images", "website-images");
 
             Product product = new()
             {
@@ -78,7 +101,9 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
                 Price = productCreateVM.Price,
                 SKU = productCreateVM.SKU,
                 CategoryId = productCreateVM.CategoryId.Value,
-                Description = productCreateVM.Description
+                Description = productCreateVM.Description ?? string.Empty,
+                ProductTags = new List<ProductTag>(),
+                ProductImages = new List<ProductImage>()
             };
 
             if (productCreateVM.TagIds != null)

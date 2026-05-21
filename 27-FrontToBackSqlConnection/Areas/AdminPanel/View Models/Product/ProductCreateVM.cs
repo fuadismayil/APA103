@@ -13,5 +13,8 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Views.Product
         public List<int>? TagIds { get; set; }
         public List<Category>? Categories { get; set; }
         public List<Tag>? Tags { get; set; }
+        public IFormFile MainPhoto { get; set; }
+        public IFormFile HoverPhoto { get; set; }
+        public List<IFormFile> AdditionalPhoto { get; set; }
     }
 }
