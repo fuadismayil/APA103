@@ -1,4 +1,13 @@
 ﻿@model ProductUpdateVM
+@{
+    string? MainPhoto = Model.ProductImages?
+    .FirstOrDefault(pi => pi.IsPrimary == true)?.Image;
+    string? HoverPhoto = Model.ProductImages?
+    .FirstOrDefault(pi => pi.IsPrimary == false)?.Image;
+    List<ProductImage> AdditionalPhotos = Model.ProductImages?
+    .Where(pi => pi.IsPrimary == null)
+    .ToList() ?? new List<ProductImage>();
+}
 
 <div class="main-panel">
     <div class="content-wrapper">
@@ -6,14 +15,56 @@
             <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Update category</h4>
+                        <h4 class="card-title">Update product</h4>
                         <p class="card-description">
-                            Update category
+                            Update product details
                         </p>
+                        <div class="form-group">
+                            <label asp-for="MainPhoto">Main Photo</label>
+                            @if (!string.IsNullOrEmpty(MainPhoto))
+                            {
+                                <div class="mb-2">
+                                    <p class="text-muted small mb-1">Current Main Photo:</p>
+                                    <img style="width:120px; height:120px; object-fit:cover; border-radius:4px; border:1px solid #ddd;" src="~/assets/images/website-images/@MainPhoto" />
+                                </div>
+                            }
+                            <input asp-for="MainPhoto" class="form-control" placeholder="Choose New Main Photo">
+                            <span asp-validation-for="MainPhoto" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="HoverPhoto">Hover Photo</label>
+                            @if (!string.IsNullOrEmpty(HoverPhoto))
+                            {
+                                <div class="mb-2">
+                                    <p class="text-muted small mb-1">Current Hover Photo:</p>
+                                    <img style="width:120px; height:120px; object-fit:cover; border-radius:4px; border:1px solid #ddd;" src="~/assets/images/website-images/@HoverPhoto" />
+                                </div>
+                            }
+                            <input asp-for="HoverPhoto" class="form-control" placeholder="Choose New Hover Photo">
+                            <span asp-validation-for="HoverPhoto" class="text-danger"></span>
+                        </div>
                         <form class="forms-sample" method="post" asp-action="Update" enctype="multipart/form-data">
                             <div class="form-group">
+                                <label>Current additional photos</label>
+                                <div class="d-flex flex-wrap gap-3 mb-3">
+                                    @foreach (ProductImage addImage in AdditionalPhotos)
+                                    {
+                                        <div class="position-relative border p-1 rounded səkili-blok" style="width:110px;">
+                                            <img style="width:100px; height:100px; object-fit:cover;" src="~/assets/images/website-images/@addImage.Image" />
+                                            <input asp-for="ImageIds" type="hidden" value="@addImage.Id" />
+                                            <button type="button" class="btn btn-danger btn-sm custom-btn position-absolute" style="top:2px; right:2px; padding:2px 6px;">x</button>
+                                        </div>
+                                    }
+                                </div>  
+                                <label asp-for="AdditionalPhoto">Upload New Additional Photos</label>
+                                <input asp-for="AdditionalPhoto" class="form-control" placeholder="Enter AdditionalPhoto">
+                                <span asp-validation-for="ImageIds" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
                                 <label asp-for="Name">Product Name</label>
-                                <input asp-for="Name" class="form-control" placeholder="Enter product Name">
+                                <input asp-for="Name" class="form-control" placeholder="Enter Product Name">
                                 <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
                             <div class="form-group">
@@ -40,7 +91,7 @@
                             </div>
                             <div class="form-group">
                                 <label asp-for="TagIds">Tag</label>
-                                <select asp-for="TagIds" asp-items="@(new SelectList(Model.Tags, "Id", "Name"))" class="form-control">
+                                <select asp-for="TagIds" asp-items="@(new SelectList(Model.Tags, "Id", "Name"))" class="form-control" multiple>
                                 </select>
                                 <span asp-validation-for="TagIds" class="text-danger"></span>
                             </div>
@@ -53,3 +104,9 @@
         </div>
     </div>
 </div>
+@section DeleteImages {
+    <script>
+        var btns document.querySelectorAll(".custom-btn");
+        for (let i=0;i<btns.length;i++){btns[i].addEventListener("click",()=>{btns[i].parentElement.remove();});}
+    </script>
+}

@@ -12,5 +12,10 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.View_Models.Product
         public List<Category>? Categories { get; set; }
         public List<int>? TagIds { get; set; }
         public List<Tag>? Tags { get; internal set; }
+        public IFormFile? MainPhoto { get; set; }
+        public IFormFile? HoverPhoto { get; set; }
+        public List<int> ImageIds { get; set; }
+        public List<ProductImage> ProductImages { get; internal set; }
+        public List<IFormFile>? AdditionalPhoto { get; set; }
     }
 }

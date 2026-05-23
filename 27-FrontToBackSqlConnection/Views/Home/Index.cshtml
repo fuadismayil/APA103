@@ -148,16 +148,14 @@
                         <div class="product-item-wrap row">
                             @foreach (Product product in Model.Products)
                             {
-                              <div class="col-xl-3 col-md-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="product-img">
-                                        <a asp-controller="shop" asp-action="index">
-                                            <img class="primary-img"
-                                                 src="~/assets/images/website-images//@product.ProductImages.FirstOrDefault(p=>p.IsPrimary==true)?.Image"
-                                                 alt="Product Images" />
-                                            <img class="secondary-img"
-                                                     src="~/assets/images/website-images//@product.ProductImages.FirstOrDefault(p => p.IsPrimary == false)?.Image"
-                                                 alt="Product Images" />
+                                <div class="col-xl-3 col-md-4 col-sm-6">
+                                    <div class="product-item">
+                                        <div class="product-img">
+                                            <a asp-controller="shop" asp-action="index">
+                                                @{
+                                                    var primaryImg = product.ProductImages.FirstOrDefault(p => p.IsPrimary == true)?.Image;
+                                                    var hoverImg = product.ProductImages.FirstOrDefault(p => p.IsPrimary == false)?.Image;
+                                                }
                                         </a>
                                         <div class="product-add-action">
                                             <ul>
