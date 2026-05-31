@@ -1,0 +1,86 @@
+﻿@model Product
+
+<div class="row">
+    <div class="col-md-10 grid-margin stretch-card">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h4 class="card-title mb-1">@Model.Name</h4>
+                        <p class="text-muted mb-0">Product details</p>
+                    </div>
+                    <div>
+                        <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning text-white">
+                            Update
+                        </a>
+                        <a asp-action="Index" class="btn btn-light">
+                            Back
+                        </a>
+                    </div>
+                </div><hr />
+                <h5 class="mb-3">Images</h5>
+                <div class="d-flex flex-wrap gap-3 mb-4">
+                    @if (Model.ProductImages is not null && Model.ProductImages.Count > 0)
+                    {
+                        @foreach (var productImage in Model.ProductImages)
+                        {
+                            if (string.IsNullOrWhiteSpace(productImage.Image) || productImage.Image.ToLower().Trim() == "null")
+                            {
+                                continue;
+                            }
+                            <div class="border rounded p-2 bg-light text-center shadow-sm" style="width: 140px;">
+                                <img src="~/assets/images/website-images/@productImage.Image" alt="Product Image" class="rounded" style="width: 110px; height: 110px; object-fit: cover;" />
+                                <div class="mt-2">
+                                    @if (productImage.IsPrimary == true)
+                                    {
+                                        <span class="badge badge-success">Main</span>
+                                    }
+                                    else if (productImage.IsPrimary == false)
+                                    {
+                                        <span class="badge badge-info">Hover</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-secondary">Additional</span>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p class="text-muted">No images found for this product.</p>
+                    }
+                </div><hr />
+                <h5 class="mb-3">Product Information</h5>
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <p><strong>ID:</strong> @Model.Id</p>
+                        <p><strong>Product Name:</strong> @Model.Name</p>
+                        <p><strong>Price:</strong> @Model.Price USD</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>SKU Code:</strong> @Model.SKU</p>
+                        <p><strong>Category ID:</strong> @Model.CategoryId</p>
+                    </div>
+                </div><hr />
+                <h5 class="mb-3">Associated Tags</h5>
+                <div class="mb-4">
+                    @if (Model.ProductTags is not null && Model.ProductTags.Count > 0)
+                    {
+                        @foreach (var pTag in Model.ProductTags)
+                        {
+                            <span class="badge badge-outline-primary m-1">#@pTag.Tag?.Name</span>
+                        }
+                    }
+                    else
+                    {
+                        <span class="text-muted">No tags assigned to this product.</span>
+                    }
+                </div><hr />
+                <h5 class="mb-3">Description</h5>
+                <div class="bg-light border rounded p-3">@Model.Description</div>
+            </div>
+        </div>
+    </div>
+</div>

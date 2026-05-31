@@ -6,10 +6,12 @@ using _27_FrontToBackSqlConnection.Utilities.Enums;
 using _27_FrontToBackSqlConnection.Utilities.Extension;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly AppDbContext _context;
@@ -24,7 +26,7 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
         }
 
 
-
+        [Authorize(Roles = "Admin, Moderator, Member")]
         public async Task<IActionResult> Index()
         {
             List<ProductGetVM> products = await _context.Products
@@ -45,7 +47,7 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
         }
 
 
-
+        [Authorize(Roles = "Admin, Moderator")]
         public async Task<IActionResult> Create()
         {
             ProductCreateVM productCreateVM = new()
@@ -59,6 +61,7 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Moderator")]
         public async Task<IActionResult> Create(ProductCreateVM productCreateVM)
         {
             productCreateVM.Categories = await _context.Categories.Where(c => !c.IsDeleted).ToListAsync();
@@ -104,8 +107,45 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id is null || id < 1) return BadRequest();
+            Product? product = await _context.Products
+                .Include(p => p.ProductTags)
+                .Include(p => p.ProductImages)
+                .FirstOrDefaultAsync(p => p.Id == id);
+            if (product == null) return NotFound();
+            if (product.ProductImages is not null && product.ProductImages.Count > 0)
+            {
+                foreach (var productImage in product.ProductImages)
+                {
+                    if (!string.IsNullOrEmpty(productImage.Image))
+                    {
+                        productImage.Image.DeleteFile(_env.WebRootPath, "assets", "images", "website-images");
+                    }
+                }
+                _context.ProductImages.RemoveRange(product.ProductImages);
+            }
+            if (product.ProductTags is not null && product.ProductTags.Count > 0) _context.ProductTags.RemoveRange(product.ProductTags);
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
 
+        [Authorize(Roles = "Admin, Moderator")]
+        public async Task<IActionResult> Detail(int? id)
+        {
+            if (id == null || id < 1) return BadRequest();
+            Product? product = await _context.Products
+                .Include(p => p.ProductImages)
+                .Include(p => p.ProductTags)
+                .ThenInclude(pt => pt.Tag)
+                .FirstOrDefaultAsync(p => p.Id == id);
+            return View(product);
+        }
 
+        [Authorize(Roles = "Admin, Moderator")]
         public async Task<IActionResult> Update(int? id)
         {
             if (id == null || id < 1) return BadRequest();
@@ -132,6 +172,7 @@ namespace _27_FrontToBackSqlConnection.Areas.AdminPanel.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Moderator")]
         public async Task<IActionResult> Update(int? id, ProductUpdateVM productUpdateVM)
         {
             productUpdateVM.Categories=await _context.Categories.Where(c=>!c.IsDeleted).ToListAsync();
